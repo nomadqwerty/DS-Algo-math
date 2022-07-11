@@ -7,8 +7,8 @@
 // russian doll example
 
 const doll = (model)=>{
-
-    
+    // edge case
+    if(typeof model !== 'number')
     // base
     if(model==1) return 
     // flow

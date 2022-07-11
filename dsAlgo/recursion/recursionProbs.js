@@ -1,7 +1,7 @@
 const assert = require('assert')
 // fibonaci seq
 const fib = (n)=>{
-    if(typeof n !== 'number'||n<0) return 'error'
+    if(typeof n !== 'number'|| n<0) return 'error'
     if(n<=1){
         return n
     }else{
