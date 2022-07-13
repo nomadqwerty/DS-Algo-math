@@ -26,14 +26,47 @@ let val = 9
 
 
 // best time to buy solution
-let price = [7,1,5,0,6,3,2]
-let min = price[0]
-let max = 0
-for(let i = 0; i<price.length;i++){
-    min = Math.min(min,price[i])
-    let indexVal = price.indexOf(min)
-    if(indexVal<i){
-        max = Math.max(max,price[i])
+// let price = [7,1,5,0,6,3,2]
+// let min = price[0]
+// let max = 0
+// for(let i = 0; i<price.length;i++){
+//     min = Math.min(min,price[i])
+//     let indexVal = price.indexOf(min)
+//     if(indexVal<i){
+//         max = Math.max(max,price[i])
+//     }
+// }
+// console.log(min,max)
+
+
+// duplicate finder
+// naive
+let arr2 = [1,1,1,3,3,2]
+
+arr2 = arr2.sort((a,b)=>{return a-b})
+
+for(let i = 0; i<arr2.length;i++){
+    if(arr2[i]==arr2[i+1]){
+        console.log(false)
+        break
     }
 }
-console.log(min,max)
+
+
+// optimal:duplicate finder
+let arr3 = [1,3,4,1,2,3,1]
+let obj1 = {}
+
+for(let i = 0;i<arr3.length;i++){
+    if(arr3[i] in obj1){
+        obj1[arr3[i]]++
+        console.log('true')
+        return
+    }
+    else{
+        obj1[arr3[i]]=1
+    }
+    
+
+}
+console.log(obj1)

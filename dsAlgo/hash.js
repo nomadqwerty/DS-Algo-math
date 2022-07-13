@@ -1,3 +1,4 @@
+const Slinked = require('../linkedList')
 // hashing is a method of sorting and indexing data
 // idea behind hashing is to store large data to be indexed with keys ceated by formulas. (hashFuncs)
 
@@ -42,3 +43,27 @@ let hashFuncStr = (hashValue,index)=>{
 // good traits of a hash func
 // distubuted well across table
 // uses all input to avoid collision
+
+// collsion resoltion techniques
+// 1. linked list. using Llist we insert nodes instead of values like str
+let hashtable = []
+
+// lets say we want to insert dave in the hashtable
+let hashKey = 'dave'
+
+// we create a node for list for it
+let hashValue = new Slinked()
+
+// insert dave as a node
+hashValue.insert('dave')
+
+// insert the list into the hashtable
+hashtable[0]=hashValue
+
+// when collision. when index i (lets say i == 0 in loop) is filled
+if(hashtable[0]){
+    // we insert value as the next value in dave linked list
+    hashtable[0].insert('dan')
+}
+
+console.log(hashtable[0])
