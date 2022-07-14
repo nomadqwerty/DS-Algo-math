@@ -13,6 +13,9 @@ class Slinked{
     }
     insert(val){
         let node = new Node(val)
+        if(this.len===10){
+            return 'list is full'
+        }
         if(this.head === null){
             this.head = node
             this.tail = node
@@ -22,6 +25,7 @@ class Slinked{
             while(cur){
                 if(cur.next==null){
                     cur.next = node
+                    this.tail = node
                     this.len++
                     break
                 }

@@ -66,4 +66,8 @@ if(hashtable[0]){
     hashtable[0].insert('dan')
 }
 
-console.log(hashtable[0])
+console.log(hashtable)
+
+// hashTable is full 
+// with open addressing if the ht is full. we just double the hash table length(very time consuming)
+
