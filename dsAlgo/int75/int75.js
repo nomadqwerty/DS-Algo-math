@@ -73,19 +73,17 @@
 
 // product of array except left
 let arr = [1,2,3,4]
-
 let res = []
-
 let pre = 1
-
-for(let i = 0; i < arr.length; i++){
+for(let i = 0; i< arr.length;i++){
     res[i]=pre
-    pre *= arr[i]
+    pre*=arr[i]
 }
+
 let post = 1
-for(let i = arr.length-1; i>=0; i--){
-    res[i] *= post
-    post *= arr[i]
+for(let i = arr.length-1; i>=0 ; i--){
+    res[i]*=post
+    post*=arr[i]
 }
 console.log(res)
 

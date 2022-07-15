@@ -21,16 +21,10 @@ class Slinked{
             this.tail = node
             this.len++
         }else{
-            let cur = this.head
-            while(cur){
-                if(cur.next==null){
-                    cur.next = node
-                    this.tail = node
-                    this.len++
-                    break
-                }
-                cur=cur.next
-            }
+           let temp = this.head
+           node.next = temp
+           this.head = node
+           this.len++
         }
     }
 }
@@ -40,5 +34,6 @@ list.insert(1)
 list.insert(2)
 list.insert(3)
 list.insert(4)
+console.log(list)
 
 module.exports = Slinked
