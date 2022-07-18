@@ -71,19 +71,36 @@
 // }
 // console.log(obj1)
 
-// product of array except left
-let arr = [1,2,3,4]
-let res = []
-let pre = 1
-for(let i = 0; i< arr.length;i++){
-    res[i]=pre
-    pre*=arr[i]
-}
+// // product of array except left
+// let arr = [1,2,3,4]
+// let res = []
+// let pre = 1
+// for(let i = 0; i< arr.length;i++){
+//     res[i]=pre
+//     pre*=arr[i]
+// }
 
-let post = 1
-for(let i = arr.length-1; i>=0 ; i--){
-    res[i]*=post
-    post*=arr[i]
+// let post = 1
+// for(let i = arr.length-1; i>=0 ; i--){
+//     res[i]*=post
+//     post*=arr[i]
+// }
+// console.log(res)
+
+
+
+// maximim subarray.
+let nums = [5,4,-1,7,8]
+
+let maxSub = nums[0]
+let curSum = maxSub
+
+for(let i = 1;i<nums.length;i++){
+    if(curSum<0){
+        curSum = 0
+    }
+    curSum = Math.max(nums[i]+curSum,nums[i])
+    maxSub = Math.max(maxSub,curSum)
 }
-console.log(res)
+console.log(maxSub)
 

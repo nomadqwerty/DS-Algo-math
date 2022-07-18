@@ -29,11 +29,6 @@ class Slinked{
     }
 }
 
-const list = new Slinked()
-list.insert(1)
-list.insert(2)
-list.insert(3)
-list.insert(4)
-console.log(list)
+
 
 module.exports = Slinked
