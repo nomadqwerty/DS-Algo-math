@@ -45,6 +45,7 @@ let hashFuncStr = (hashValue,index)=>{
 // uses all input to avoid collision
 
 // collsion resoltion techniques
+
 // 1. linked list. using Llist we insert nodes instead of values like str
 let hashtable = []
 
@@ -71,3 +72,17 @@ console.log(hashtable)
 // hashTable is full 
 // with open addressing if the ht is full. we just double the hash table length(very time consuming)
 
+// pros and cons of collision resolution
+// 1. direct chaining- linked list
+// never gets full 
+// but it contains to much nodes that traversing or searching takes o(n)
+
+//2. open addressing 
+// easy to code
+// when full we create new hashTable (more time)
+
+// use Open addressing when n is limited
+// use Direct when n is unlimited and we perform deletion often
+
+// practical use of hashing
+// security for db. hashed passwords are more secure than regular 

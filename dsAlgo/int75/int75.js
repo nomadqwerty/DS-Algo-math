@@ -90,17 +90,17 @@
 
 
 // maximim subarray.
+// an array to find 
 let nums = [5,4,-1,7,8]
 
-let maxSub = nums[0]
-let curSum = maxSub
+let m = nums[0]
+let c = m
 
-for(let i = 1;i<nums.length;i++){
-    if(curSum<0){
-        curSum = 0
+for(let i = 1; i<nums.length;i++){
+    if(c<0){
+        c=0
     }
-    curSum = Math.max(nums[i]+curSum,nums[i])
-    maxSub = Math.max(maxSub,curSum)
+    c = Math.max(nums[i]+c, nums[i])
+    m = Math.max(m, c)
 }
-console.log(maxSub)
-
+console.log(m)

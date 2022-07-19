@@ -16,18 +16,16 @@ let hash
 let hashet = (input,index)=>{
     hash = [] 
     
-    let hashVal = hashFuncStr(input,index)
+    let val = hashFuncStr(input,index)
+    console.log(val)
+    hash[val] = new linked()
     
-    if(!hash[hashVal]){
-        hash[hashVal] = new linked()
-        hash[hashVal].insert(input)
+    if(hash[val].head==null){
+        hash[val].insert(input)
     }
-    else{
-        hash[hashVal].insert(input)
-    }
+    
 }
 
 hashet('pink',3)
-hashet('zink',3)
-
-console.log(hash.length)
+hash[2]
+console.log(hash)
