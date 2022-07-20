@@ -12,20 +12,21 @@ let hashFuncStr = (hashValue,index)=>{
     return asciiVal%index
 }
 
-let hash
-let hashet = (input,index)=>{
-    hash = [] 
-    
-    let val = hashFuncStr(input,index)
-    console.log(val)
-    hash[val] = new linked()
-    
-    if(hash[val].head==null){
-        hash[val].insert(input)
-    }
-    
-}
+let hash = []
+let size = 10
 
-hashet('pink',3)
-hash[2]
+let hashFunc = (val,index)=>{
+    let hashV = hashFuncStr(val,index)
+    if(hash[hashV]===undefined){
+        hash[hashV] = new linked()
+        hash[hashV].insert(val)
+    }else if(hash[hashV]){
+        console.log('it exists')
+        hash[hashV].insert(val)
+    }
+  
+}
+hashFunc('value',1)
+hashFunc('plate',2)
+hashFunc('pink',4)
 console.log(hash)

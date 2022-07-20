@@ -104,3 +104,19 @@ for(let i = 1; i<nums.length;i++){
     m = Math.max(m, c)
 }
 console.log(m)
+
+
+// product of maxSubarray
+let nums2 = [-2,0,-1]
+
+let m2 = nums2[0]
+let c2 = m2
+
+for(let i = 1; i<nums2.length;i++){
+    if(c2<0){
+        c2=0
+    }
+    c2 = Math.max(nums2[i]*c2, nums2[i])
+    m2 = Math.max(m2, c2)
+}
+console.log(m2)
