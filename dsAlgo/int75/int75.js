@@ -89,34 +89,68 @@
 
 
 
-// maximim subarray.
-// an array to find 
-let nums = [5,4,-1,7,8]
+// // maximim subarray.
+// // an array to find 
+// let nums = [5,4,-1,7,8]
 
-let m = nums[0]
-let c = m
+// let m = nums[0]
+// let c = m
 
-for(let i = 1; i<nums.length;i++){
-    if(c<0){
-        c=0
+// for(let i = 1; i<nums.length;i++){
+//     if(c<0){
+//         c=0
+//     }
+//     c = Math.max(nums[i]+c, nums[i])
+//     m = Math.max(m, c)
+// }
+// console.log(m)
+
+
+// // product of maxSubarray
+// let nums2 = [-2,0,-1]
+
+// let m2 = nums2[0]
+// let c2 = m2
+
+// for(let i = 1; i<nums2.length;i++){
+//     if(c2<0){
+//         c2=0
+//     }
+//     c2 = Math.max(nums2[i]*c2, nums2[i])
+//     m2 = Math.max(m2, c2)
+// }
+// console.log(m2)
+
+// isomorphic strings\
+
+let isoStr = (sString,tString)=>{
+    let s = sString
+    let t = tString
+
+    if(s.length!==t.length){
+        return ('string not isomorphic')
     }
-    c = Math.max(nums[i]+c, nums[i])
-    m = Math.max(m, c)
-}
-console.log(m)
 
+    let sHash = {}
+    let tHash = {}
 
-// product of maxSubarray
-let nums2 = [-2,0,-1]
-
-let m2 = nums2[0]
-let c2 = m2
-
-for(let i = 1; i<nums2.length;i++){
-    if(c2<0){
-        c2=0
+    for(let i = 0; i < s.length; i++){
+        if(sHash[s[i]]){
+            if(sHash[s[i]]!==t[i]){
+                return ('s string not isomorphic')
+            }
+        }else{
+            sHash[s[i]] = t[i]
+        }
+        if(tHash[t[i]]){
+            if(tHash[t[i]]!==s[i]){
+                return ('t string not isomorphic')
+            }
+        }else{
+            tHash[t[i]] = s[i]
+        }
     }
-    c2 = Math.max(nums2[i]*c2, nums2[i])
-    m2 = Math.max(m2, c2)
+    return ' string is isomorphic'
+
 }
-console.log(m2)
+console.log(isoStr('abc@','abc@'))
