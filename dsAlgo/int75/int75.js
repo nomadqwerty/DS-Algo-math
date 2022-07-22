@@ -121,36 +121,58 @@
 // }
 // console.log(m2)
 
-// isomorphic strings\
 
-let isoStr = (sString,tString)=>{
-    let s = sString
-    let t = tString
 
-    if(s.length!==t.length){
-        return ('string not isomorphic')
+// // ////////////////////////////////////////////
+// // // isomorphic strings\
+// let isoStr = (sString,tString)=>{
+//     let s = sString
+//     let t = tString
+
+//     if(s.length!==t.length){
+//         return ('string not isomorphic')
+//     }
+
+//     let sHash = {}
+//     let tHash = {}
+
+//     for(let i = 0; i < s.length; i++){
+//         if(sHash[s[i]]){
+//             if(sHash[s[i]]!==t[i]){
+//                 return ('string not isomorphic')
+//             }
+//         }else{
+//             sHash[s[i]] = t[i]
+//         }
+//         if(tHash[t[i]]){
+//             if(tHash[t[i]]!==s[i]){
+//                 return ('string not isomorphic')
+//             }
+//         }else{
+//             tHash[t[i]] = s[i]
+//         }
+//     }
+//     return ' string is isomorphic'
+
+// }
+// console.log(isoStr('aaca','bbdr'))
+
+const rev = (nums,start,end)=>{
+    while(start<end){
+        [nums[start],nums[end]] = [nums[end],nums[start]]
+        start++
+        end--
     }
-
-    let sHash = {}
-    let tHash = {}
-
-    for(let i = 0; i < s.length; i++){
-        if(sHash[s[i]]){
-            if(sHash[s[i]]!==t[i]){
-                return ('s string not isomorphic')
-            }
-        }else{
-            sHash[s[i]] = t[i]
-        }
-        if(tHash[t[i]]){
-            if(tHash[t[i]]!==s[i]){
-                return ('t string not isomorphic')
-            }
-        }else{
-            tHash[t[i]] = s[i]
-        }
-    }
-    return ' string is isomorphic'
 
 }
-console.log(isoStr('abc@','abc@'))
+
+const rotate = (nums,k)=>{
+    k = k%nums.length
+    rev(nums,0,nums.length-1)
+    rev(nums,0,k-1)
+    rev(nums,k,nums.length-1)
+
+    return nums
+}
+
+console.log(rotate([1,2,3,4,5],2))
