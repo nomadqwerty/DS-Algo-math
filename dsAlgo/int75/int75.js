@@ -157,22 +157,42 @@
 // }
 // console.log(isoStr('aaca','bbdr'))
 
-const rev = (nums,start,end)=>{
-    while(start<end){
-        [nums[start],nums[end]] = [nums[end],nums[start]]
-        start++
-        end--
+////////////////////////////////////////////////
+///// rotate array
+// const rev = (nums,i,j)=>{
+//     while(i<j){
+//         [nums[i],nums[j]] = [nums[j],nums[i]]
+//         i++
+//         j--
+//     }
+// }
+
+// const rotate = (nums,k)=>{
+//     k = k%nums.length
+//     rev(nums,0,nums.length-1)
+//     rev(nums,0,k-1)
+//     rev(nums,k,nums.length-1)
+//     return nums
+// }
+// rotate([1,2,3,4],175)
+
+
+/////////////////////////
+// missing numbers
+let arr45 = [-24,1,2,3,4,5,6,7,8,9,11,13,16,24]
+arr45.sort((a,b)=>a-b)
+let compare = []
+let set = new Set([...arr45])
+console.log(set)
+
+for (let i = 0; i < arr45[arr45.length - 1]; i++){
+    compare.push(i+1)
+}
+
+for(let i = 0;i <compare.length;i++){
+    if(!set.has(compare[i])){
+        console.log(compare[i])
     }
-
 }
 
-const rotate = (nums,k)=>{
-    k = k%nums.length
-    rev(nums,0,nums.length-1)
-    rev(nums,0,k-1)
-    rev(nums,k,nums.length-1)
 
-    return nums
-}
-
-console.log(rotate([1,2,3,4,5],2))

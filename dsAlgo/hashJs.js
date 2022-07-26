@@ -13,7 +13,6 @@ let hashFuncStr = (hashValue,index)=>{
 }
 
 let hash = []
-let size = 10
 
 let hashFunc = (val,index)=>{
     let hashV = hashFuncStr(val,index)
@@ -21,7 +20,6 @@ let hashFunc = (val,index)=>{
         hash[hashV] = new linked()
         hash[hashV].insert(val)
     }else if(hash[hashV]){
-        console.log('it exists')
         hash[hashV].insert(val)
     }
   
