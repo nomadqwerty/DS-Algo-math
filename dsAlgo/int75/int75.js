@@ -177,22 +177,27 @@
 // rotate([1,2,3,4],175)
 
 
-/////////////////////////
-// missing numbers
-let arr45 = [-24,1,2,3,4,5,6,7,8,9,11,13,16,24]
-arr45.sort((a,b)=>a-b)
-let compare = []
-let set = new Set([...arr45])
-console.log(set)
+// /////////////////////////
+// // missing numbers
+// let arr45 = [1,2,3,4,5,6,7,8,9,11,13,16,24]
+// arr45.sort((a,b)=>a-b)
+// let compare = []
+// let set = new Set([...arr45])
 
-for (let i = 0; i < arr45[arr45.length - 1]; i++){
-    compare.push(i+1)
-}
+// for (let i = 0; i < arr45[arr45.length - 1]; i++){
+//     compare.push(i+1)
+// }
 
-for(let i = 0;i <compare.length;i++){
-    if(!set.has(compare[i])){
-        console.log(compare[i])
-    }
-}
+// for(let i = 0;i <compare.length;i++){
+//     if(!set.has(compare[i])){
+//         console.log(compare[i])
+//     }
+// }
 
 
+////////////////////////////
+// product of two max integers
+
+let arr = [1,20,30,44,58,57,7,8,23,6,8,24,6]
+arr.sort((a,b)=>a-b)
+console.log(arr[arr.length-1]*arr[arr.length-2])
