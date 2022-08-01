@@ -195,9 +195,34 @@
 // }
 
 
-////////////////////////////
-// product of two max integers
+// ////////////////////////////
+// // product of two max integers
+// let arr = [1,20,30,44,58,57,7,8,23,6,8,24,6]
+// arr.sort((a,b)=>a-b)
+// console.log(arr[arr.length-1]*arr[arr.length-2])
 
-let arr = [1,20,30,44,58,57,7,8,23,6,8,24,6]
-arr.sort((a,b)=>a-b)
-console.log(arr[arr.length-1]*arr[arr.length-2])
+const arr = [3,4,5,6,0,1,2]
+const targ = 0
+let mid = Math.floor(arr.length/2)
+if(arr[mid]<arr[mid+1]){
+    mid = mid+1
+}
+let pivot = arr[mid]
+let left = arr[0]
+let right = arr[arr.length-1]
+let end = arr.length - mid-1
+
+if(targ>left&&targ<pivot){
+    for(let i = 0; i <= mid; i++){
+        if(arr[i]==targ){
+            console.log(i)
+        }
+    }
+}
+if(targ<right&&targ<pivot){
+    for(let i = mid; i < arr.length; i++){
+        if(arr[i]==targ){
+            console.log(i)
+        }
+    }
+}
