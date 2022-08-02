@@ -1,3 +1,6 @@
+// https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions
+
+
 // two sum. solution
 // naive solution
 // let arr = [1,2,5,3,6,7]
@@ -201,40 +204,15 @@
 // arr.sort((a,b)=>a-b)
 // console.log(arr[arr.length-1]*arr[arr.length-2])
 
-const arr = [3,4,5,6,0,1,2]
-const targ = 0
-let mid = Math.floor(arr.length/2)
-if(arr[mid]<arr[mid+1]){
-    mid = mid+1
-}
-let pivot = arr[mid]
-let left = arr[0]
-let right = arr[arr.length-1]
-let end = arr.length - mid-1
 
-if(targ>left&&targ<pivot){
-    for(let i = 0; i <= mid; i++){
-        if(arr[i]==targ){
-            // console.log(i)
-        }
-    }
-}
-if(targ<right&&targ<pivot){
-    for(let i = mid; i < arr.length; i++){
-        if(arr[i]==targ){
-            // console.log(i)
-        }
-    }
-}
-
-
+///////////////////////////////////
+// sorted array search.
 const arr2 = [8,9,10,0,1,2,3,4,5,6,7]
-
 let t = 7
 let mid2 = Math.floor(arr2.length/2)
 let end2 = arr2.length-1
 let start2 = 0
-if(arr2[mid]<=t&&arr2[end2]>=t){
+if(arr2[mid2]<=t&&arr2[end2]>=t){
     console.log(true)
     for(let i = mid2; i < arr2.length;i++){
         if(arr2[i]==t){
