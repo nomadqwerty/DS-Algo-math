@@ -215,14 +215,36 @@ let end = arr.length - mid-1
 if(targ>left&&targ<pivot){
     for(let i = 0; i <= mid; i++){
         if(arr[i]==targ){
-            console.log(i)
+            // console.log(i)
         }
     }
 }
 if(targ<right&&targ<pivot){
     for(let i = mid; i < arr.length; i++){
         if(arr[i]==targ){
-            console.log(i)
+            // console.log(i)
+        }
+    }
+}
+
+
+const arr2 = [8,9,10,0,1,2,3,4,5,6,7]
+
+let t = 7
+let mid2 = Math.floor(arr2.length/2)
+let end2 = arr2.length-1
+let start2 = 0
+if(arr2[mid]<=t&&arr2[end2]>=t){
+    console.log(true)
+    for(let i = mid2; i < arr2.length;i++){
+        if(arr2[i]==t){
+            console.log(arr2[i])
+        }
+    }
+}else{
+    for(let i = start2; i <= mid2;i++){
+        if(arr2[i]==t){
+            console.log(arr2[i])
         }
     }
 }
