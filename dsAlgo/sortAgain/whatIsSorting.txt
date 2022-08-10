@@ -1,0 +1,33 @@
+as a software engineer you need to able to sort data in an efficient manner. knowing efficient data sorting techniques will help in the performance of software.
+
+sorting van be catergorised into two braches and four sub branches(two for branch)
+
+sort = {
+    spaceUsed:{
+        inPlace:[inPlace sorting algorithm is one that does not need additional space to sort data, the space complexity is always o(1), an example is bubble sort],
+
+        outofPlace:[outOfPlace is the complete opposite of inplace algorithm, it requires additional space making it o(n) space complexity, an example is merge sort],
+    },
+    stabilty:{
+        stable:[if a sorting algorithm after sorting the data DOES NOT change the sequence of similar content in which the appear, this is a stable algorithm, an example is insertion sort],
+
+        unstable:[if a sorting algorithm after sorting the data changes the sequence of similar content in which the appear, this is an unstable algorithm, an example is quick sort],
+    }
+}
+
+
+// sorting terminologies.
+// increasing order means the sequence is ascending
+ie [1,2,3,4,5]
+
+// decreasing order means the sequence is descending
+ie [5,4,3,2,1]
+
+
+
+// n.b when non is used it means it contains duplicates
+// non-increasing order means the sequence is descending and it contains duplicates
+ie [5,4,4,3,2,1]
+
+// non-decreasing order means the sequence is ascending and it contains duplicates
+ie [1,2,3,4,4,5]
