@@ -69,15 +69,15 @@ const genny = function* () {
   i++;
 };
 let iter = genny();
-console.log(iter.next());
-console.log(iter.next());
-console.log(iter.next());
-console.log(iter.next());
-console.log(iter.next());
-console.log(iter.next());
-console.log(iter.next());
-console.log(iter.next());
-console.log(iter.next());
+// console.log(iter.next());
+// console.log(iter.next());
+// console.log(iter.next());
+// console.log(iter.next());
+// console.log(iter.next());
+// console.log(iter.next());
+// console.log(iter.next());
+// console.log(iter.next());
+// console.log(iter.next());
 
 let nonIter = {
   a: 1,
@@ -125,10 +125,17 @@ let iterObj = {
 
 let data = iterObj[Symbol.iterator]();
 
-console.log(data.next());
-console.log(data.next());
-console.log(data.next());
-console.log(data.next());
+// console.log(data.next());
+// console.log(data.next());
+// console.log(data.next());
+// console.log(data.next());
 
 ///////////////////////////////////////////////////////////
-// symbol.iterator
+// symbol, well known symbols
+
+//find symbol props in objects
+console.log("here", Object.getOwnPropertySymbols(iterObj));
+
+const ins = Symbol("value");
+
+console.log(Object.getOwnPropertyNames(Symbol));

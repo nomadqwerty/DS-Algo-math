@@ -41,18 +41,18 @@ const selected = (array) => {
   return array;
 };
 
-// console.log(selected([0, 2, 34, 22, 10, 19, 17]));
+console.log(selected([2, 1, 0]));
 
-const inserted = (array) => {
-  for (var i = 1; i < array.length; i++) {
-    var cur = array[i];
-    for (var j = i - 1; j >= 0 && array[j] > cur; j--) {
-      array[j + 1] = array[j];
-      console.log(array);
-    }
-    array[j + 1] = cur;
-  }
-  return array;
-};
+// const inserted = (array) => {
+//   for (var i = 1; i < array.length; i++) {
+//     var cur = array[i];
+//     for (var j = i - 1; j >= 0 && array[j] > cur; j--) {
+//       array[j + 1] = array[j];
+//       console.log(array);
+//     }
+//     array[j + 1] = cur;
+//   }
+//   return array;
+// };
 
-console.log(inserted([0, 2, 34, 22, 10, 19, 17]));
+// console.log(inserted([0, 2, 34, 22, 10, 19, 17]));
