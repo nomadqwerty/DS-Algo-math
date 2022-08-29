@@ -25,11 +25,12 @@ const helperSort = (arr1, arr2) => {
   return empArr;
 };
 
-console.log(helperSort([1, 2, 4, 6], [3, 5, 7, 9]));
-
 const merge = (arr) => {
   if (arr.length <= 1) return arr;
   let mid = Math.floor(arr.length / 2);
   let left = merge(arr.slice(0, mid));
   let right = merge(arr.slice(mid));
+  return helperSort(left, right);
 };
+
+console.log(merge([1, 5, 8, 2, 9, 3, 2, 4, 68]));
