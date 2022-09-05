@@ -35,25 +35,54 @@
 
 // console.log(merge([1, 5, 8, 2, 9, 3, 2, 4, 68]));
 
-/////////////////////////////////////////////
-const arr = [28, 14, 5, 42, 30, 25, 45, 60];
+// /////////////////////////////////////////////
+// const arr = [28, 14, 5, 42, 30, 25, 45, 60];
 
-const swap = (arr, i, j) => {
-  [arr[i], arr[j]] = [arr[j], arr[i]];
+// const swap = (arr, i, j) => {
+//   [arr[i], arr[j]] = [arr[j], arr[i]];
+// };
+
+// let pivotHelp = (arr, start = 0, end = arr.length - 1) => {
+//   let p = arr[start];
+//   let ind = start;
+
+//   for (var i = start + 1; i < arr.length; i++) {
+//     if (arr[i] < p) {
+//       ind++;
+//       swap(arr, ind, i);
+//     }
+//   }
+//   console.log(ind);
+//   swap(arr, start, ind);
+// };
+// pivotHelp(arr);
+// console.log(arr);
+
+/////////////////////////////////////////////////////////////
+// radix
+// get value from a specified position from a group of integers , 1234 at position 0 is 4, position 1 is 3 and so on.
+const getNum = (num, index) => {
+  return Math.floor(Math.abs(num) / Math.pow(10, index)) % 10;
 };
 
-let pivotHelp = (arr, start = 0, end = arr.length - 1) => {
-  let p = arr[start];
-  let ind = start;
+// get length of a value.
+const getLength = (number) => {
+  if (number === 0 && number > 10) return 1;
 
-  for (var i = start + 1; i < arr.length; i++) {
-    if (arr[i] < p) {
-      ind++;
-      swap(arr, ind, i);
-    }
+  //log10 means how many times the base(10) will multiplied by its self to get the given number
+  // log10 of 100 is 2, because 10 * 10 is 100,
+  // basically we get the log10 value of the input number and plus it by 1. thats how to get the length of a given interger or intergers
+  return Math.floor(Math.log10(Math.abs(number)) + 1);
+};
+
+const getMostDigits = (array) => {
+  let max = getLength(array[0]);
+  for (let i = 1; i < array.length; i++) {
+    let val = getLength(array[i]);
+    max = Math.max(max, val);
   }
-  console.log(ind);
-  swap(arr, start, ind);
+  return max;
 };
-pivotHelp(arr);
-console.log(arr);
+
+const most = getMostDigits([1234, 23, 455, 5, 11111]);
+console.log(most);
