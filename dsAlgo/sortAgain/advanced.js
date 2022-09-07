@@ -1,3 +1,4 @@
+////////////////////////////////////////////////////////
 // // merge sort
 // // create new function
 // const helperSort = (arr1, arr2) => {
@@ -35,7 +36,8 @@
 
 // console.log(merge([1, 5, 8, 2, 9, 3, 2, 4, 68]));
 
-// /////////////////////////////////////////////
+/////////////////////////////////////////////
+// quickSort
 // const arr = [28, 14, 5, 42, 30, 25, 45, 60];
 
 // const swap = (arr, i, j) => {
@@ -52,20 +54,30 @@
 //       swap(arr, ind, i);
 //     }
 //   }
-//   console.log(ind);
 //   swap(arr, start, ind);
+//   return arr;
 // };
-// pivotHelp(arr);
-// console.log(arr);
+// console.log(pivotHelp(arr));
 
-/////////////////////////////////////////////////////////////
+// const quick = (arr, left = 0, right = arr.length - 1) => {
+//   if (left < right) {
+//     let piv = pivotHelp(arr, left, right);
+//     quick(arr, left, piv - 1);
+//     quick(arr, piv - 1, right);
+//   }
+//   return arr;
+// };
+// console.log(quick(arr));
+////////////////////////////////////////////////////////////
 // radix
 // get value from a specified position from a group of integers , 1234 at position 0 is 4, position 1 is 3 and so on.
+
+const arr = [28, 14, 5, 42, 30, 25, 45, 60];
 const getNum = (num, index) => {
   return Math.floor(Math.abs(num) / Math.pow(10, index)) % 10;
 };
 
-// get length of a value.
+// // get length of a value.
 const getLength = (number) => {
   if (number === 0 && number > 10) return 1;
 
@@ -84,5 +96,17 @@ const getMostDigits = (array) => {
   return max;
 };
 
-const most = getMostDigits([1234, 23, 455, 5, 11111]);
-console.log(most);
+const radix = (nums) => {
+  let max = getMostDigits(nums);
+  for (let i = 0; i < max; i++) {
+    let digit = Array.from({ length: 10 }, () => []);
+    for (let j = 0; j < nums.length; j++) {
+      let digie = getNum(nums[j], i);
+      digit[digie].push(nums[j]);
+    }
+    nums = [].concat(...digit);
+  }
+  return nums;
+};
+
+console.log(radix(arr));
