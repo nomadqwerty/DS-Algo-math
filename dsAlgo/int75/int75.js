@@ -1,6 +1,7 @@
 // https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions
 
-
+///////////////////////////////////////////////////////////////////
+// Array
 // two sum. solution
 // naive solution
 // let arr = [1,2,5,3,6,7]
@@ -27,7 +28,6 @@
 //     }
 // }
 
-
 // best time to buy solution
 // let price = [7,1,5,0,6,3,2]
 // let min = price[0]
@@ -40,7 +40,6 @@
 //     }
 // }
 // console.log(min,max)
-
 
 // // duplicate finder
 // // naive
@@ -55,7 +54,6 @@
 //     }
 // }
 
-
 // // optimal:duplicate finder
 // let arr3 = [1,3,4,1,2,3,1]
 // let obj1 = {}
@@ -69,7 +67,6 @@
 //     else{
 //         obj1[arr3[i]]=1
 //     }
-    
 
 // }
 // console.log(obj1)
@@ -90,10 +87,8 @@
 // }
 // console.log(res)
 
-
-
 // // maximim subarray.
-// // an array to find 
+// // an array to find
 // let nums = [5,4,-1,7,8]
 
 // let m = nums[0]
@@ -107,7 +102,6 @@
 //     m = Math.max(m, c)
 // }
 // console.log(m)
-
 
 // // product of maxSubarray
 // let nums2 = [-2,0,-1]
@@ -123,8 +117,6 @@
 //     m2 = Math.max(m2, c2)
 // }
 // console.log(m2)
-
-
 
 // // ////////////////////////////////////////////
 // // // isomorphic strings\
@@ -179,7 +171,6 @@
 // }
 // rotate([1,2,3,4],175)
 
-
 // /////////////////////////
 // // missing numbers
 // let arr45 = [1,2,3,4,5,6,7,8,9,11,13,16,24]
@@ -197,13 +188,11 @@
 //     }
 // }
 
-
 // ////////////////////////////
 // // product of two max integers
 // let arr = [1,20,30,44,58,57,7,8,23,6,8,24,6]
 // arr.sort((a,b)=>a-b)
 // console.log(arr[arr.length-1]*arr[arr.length-2])
-
 
 // ///////////////////////////////////
 // // sorted array search.
@@ -227,16 +216,30 @@
 //     }
 // }
 
-let water = [2,4,3,7,1,8,9]
+// container with most water
+// let water = [2,4,3,7,1,8,9]
 
-let area = 0
-let i = 0
-let j = water.length-1
-while(i<j){
-    let height = Math.min(water[i],water[j])
-    let newArea = height*(j-i)
-    area = Math.max(area,newArea)
-    if(water[i]<water[j])i++
-    else j--
+// let area = 0
+// let i = 0
+// let j = water.length-1
+// while(i<j){
+//     let height = Math.min(water[i],water[j])
+//     let newArea = height*(j-i)
+//     area = Math.max(area,newArea)
+//     if(water[i]<water[j])i++
+//     else j--
+// }
+// console.log(area)
+
+////////////////////////////////////////////////////////////////////////////
+// Binary.
+// add nums without + - operator
+let a = 3;
+let b = 2;
+
+while (b != 0) {
+  let t = (a & b) << 1;
+  a = a ^ b;
+  b = t;
 }
-console.log(area)
+console.log(a);
