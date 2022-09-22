@@ -26,3 +26,22 @@ class AnotherBlueprint extends BluePrint {
     this.someMoreData = someMoreData;
   }
 }
+
+// OOP js: All Objects in javascript are linked to a particular prototype. All objects in js have a prototype. A prototype is like a parent object inwhich child objects linked to it can inherit properties and methods this is called prototypalinheritance. basically objects inherit methods and properties from the prototype. Prototype: is an original form or object that other objects are based off. this type of inheritance is different from a class inheriting from another class, this one is more like an instance inherirting from a class.
+
+// classes are similar from prototypes, classes delegate behaviour to the instance, in js prototypes delegate behaviour to the linked Object.
+// eg1
+const myArr = new Array({ length: 5 }, () => "item");
+
+// myArr's prototype is Array. and now myArr has all the properties Array has.
+myArr.forEach((element) => {
+  console.log(element);
+});
+// forEach is a method(behaviour) of Array, because myArr is prototypally linked to Array, myArr can use forEach behaviour
+
+// ways to link objects to prototype, and create new prototype
+// constructor function. the constructor function is a way to create objects from a function. how array,maps,sets are implemented
+
+// Es6 classes are syntactical sugar over the constructor function to make it more oop like. behind the scenes it works exactly like a constructor function.
+
+// Object.create()
