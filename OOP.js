@@ -35,7 +35,7 @@ const myArr = new Array({ length: 5 }, () => "item");
 
 // myArr's prototype is Array. and now myArr has all the properties Array has.
 myArr.forEach((element) => {
-  console.log(element);
+  // console.log(element);
 });
 // forEach is a method(behaviour) of Array, because myArr is prototypally linked to Array, myArr can use forEach behaviour
 
@@ -45,3 +45,27 @@ myArr.forEach((element) => {
 // Es6 classes are syntactical sugar over the constructor function to make it more oop like. behind the scenes it works exactly like a constructor function.
 
 // Object.create()
+
+////////////////////////////////////
+// constructor function:
+// the constructor is jst a function. But its a special type because it serves a prototype.
+// variable name of constructors should be in caps, lke in clases
+// constructor function should be a normal function and not arrow function: because we need the this keyword.
+
+const Proto = function (name, age) {
+  this.name = name;
+  this.age = age;
+};
+
+// when using constructor function we create instances intances of the constructor function using the new keyword
+
+const instance = new Proto("papaJohn", 56);
+
+console.log(instance instanceof Proto);
+console.log(typeof instance);
+
+// the new keyword is special for creating instances. it does this in 4 stages.
+// 1. when constructor function is called with new keyword, a new object is created {}
+// 2. it then assigns the "this" KW to store the new {}, this = {}
+// 3. the {} is then linked to the prototype
+// 4. the function returns the object
