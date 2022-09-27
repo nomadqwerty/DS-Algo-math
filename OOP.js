@@ -48,7 +48,7 @@ myArr.forEach((element) => {
 
 ////////////////////////////////////
 // constructor function:
-// the constructor is jst a function. But its a special type because it serves a prototype.
+// the constructor is jst a function. But its a special type because it serves as a prototype.
 // variable name of constructors should be in caps, lke in clases
 // constructor function should be a normal function and not arrow function: because we need the this keyword.
 
@@ -57,9 +57,9 @@ const Proto = function (name, age) {
   this.age = age;
 };
 
-// when using constructor function we create instances intances of the constructor function using the new keyword
+// when calling constructor function we  can create intances of the constructor function using the new keyword
 
-const instance = new Proto("papaJohn", 56);
+const instance = new Proto("papaJohn", 1960);
 
 console.log(instance instanceof Proto);
 console.log(typeof instance);
@@ -68,4 +68,67 @@ console.log(typeof instance);
 // 1. when constructor function is called with new keyword, a new object is created {}
 // 2. it then assigns the "this" KW to store the new {}, this = {}
 // 3. the {} is then linked to the prototype
-// 4. the function returns the object
+// 4. the function returns the object (this)
+
+//////
+// prototypes
+// every fucntion in javascript has a prototype. also every object
+// the Prototype of a constuctor function is the parent to the constructor. the prototype of instances are their constructors
+
+// Prototype property on a costructor is an object that holds the constructor, and holds a reference to its instances(children)
+// we can also add methods to a constructor through the prototype props
+Proto.prototype.calcAge = function () {
+  return 2022 - this.age;
+};
+console.log(Proto.prototype);
+
+// any method defined through the constructor is available to instances of the prototype because of prototypal inheritance. the this keyword is set to the object calling the method.
+console.log(instance.calcAge());
+
+// prototype look up, be able to find the prototype instances are linked to.
+// instances objects have a property called __proto__, this points to the parent prototype constructor. the link to its prototype
+console.log(instance.__proto__);
+// keep in mind the proto of instances are the same as the prototype property on the constructor.
+console.log(instance.__proto__ === Proto.prototype);
+// the prototype property is only used for instances that will be created from the constructor function(the children).
+// this means the constructor has its own prototype(parent), meaning a parent prototype the constructor is linked to
+console.log(Proto.__proto__ === instance.__proto__);
+// its confusing, but look at it like this,
+
+// Fn is a constructor function, a parent
+const Fn = function (name) {
+  this.name = name;
+};
+
+// instanceOfFn is an instance of Fn, a child
+const instanceOfFn = new Fn("child");
+
+// instanceOfFn goes for dna test to find its parent
+instanceOfFn.__proto__;
+// instanceOfFn now knows its parent is Fn
+
+// Fn also goes for a dna test to find out if instanceOfFn is its child.
+Fn.prototype;
+
+instanceOfFn.__proto__ === Fn.prototype;
+// Fn now Knows its child is instanceOfFn
+
+// which lives the question. who is Fn's parent?
+// Fn goes for dna check to find its parent
+Fn.__proto__;
+
+// now Fn's parent cant be the parent of InstanceOfFn, that will make it a grand parent.
+Fn.__proto__ !== instanceOfFn.__proto__;
+
+console.log([].__proto__ == Array.prototype);
+
+// we can also add properties through the prototype property
+
+Proto.prototype.gender = "Male";
+
+// the cactch is that it wont be an owned property, owned properties are properties that are directly defined on an constructor.
+
+// because gender was not directly assigned to Proto it wont be an owned property.
+console.log(instance.hasOwnProperty("gender"));
+// compared to an owned property.
+console.log(instance.hasOwnProperty("name"));
