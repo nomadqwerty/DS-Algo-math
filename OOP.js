@@ -132,3 +132,21 @@ Proto.prototype.gender = "Male";
 console.log(instance.hasOwnProperty("gender"));
 // compared to an owned property.
 console.log(instance.hasOwnProperty("name"));
+
+console.log(Proto.__proto__);
+console.log(Object.prototype === Proto.__proto__);
+
+// parent prototype of constructor is function object
+console.log((() => {}).__proto__ === Proto.__proto__);
+
+// the original an firt proto is an object, every thing in javaScript inherits from the Object prototype.
+console.log(Proto.__proto__.__proto__);
+console.log(Object.create({}).__proto__.__proto__);
+
+// the prototype mechanism is usefull for making reusable code.
+
+const arr = [1, 2, 3];
+
+console.log(arr.__proto__);
+
+console.log(document.body.__proto__);
