@@ -96,57 +96,158 @@ console.log(Proto.__proto__ === instance.__proto__);
 // its confusing, but look at it like this,
 
 // Fn is a constructor function, a parent
-const Fn = function (name) {
-  this.name = name;
-};
+// const Fn = function (name) {
+//   this.name = name;
+// };
 
-// instanceOfFn is an instance of Fn, a child
-const instanceOfFn = new Fn("child");
+// // instanceOfFn is an instance of Fn, a child
+// const instanceOfFn = new Fn("child");
 
-// instanceOfFn goes for dna test to find its parent
-instanceOfFn.__proto__;
-// instanceOfFn now knows its parent is Fn
+// // instanceOfFn goes for dna test to find its parent
+// instanceOfFn.__proto__;
+// // instanceOfFn now knows its parent is Fn
 
-// Fn also goes for a dna test to find out if instanceOfFn is its child.
-Fn.prototype;
+// // Fn also goes for a dna test to find out if instanceOfFn is its child.
+// Fn.prototype;
 
-instanceOfFn.__proto__ === Fn.prototype;
-// Fn now Knows its child is instanceOfFn
+// instanceOfFn.__proto__ === Fn.prototype;
+// // Fn now Knows its child is instanceOfFn
 
-// which lives the question. who is Fn's parent?
-// Fn goes for dna check to find its parent
-Fn.__proto__;
+// // which lives the question. who is Fn's parent?
+// // Fn goes for dna check to find its parent
+// Fn.__proto__;
 
-// now Fn's parent cant be the parent of InstanceOfFn, that will make it a grand parent.
-Fn.__proto__ !== instanceOfFn.__proto__;
+// // now Fn's parent cant be the parent of InstanceOfFn, that will make it a grand parent.
+// Fn.__proto__ !== instanceOfFn.__proto__;
 
-console.log([].__proto__ == Array.prototype);
+// console.log([].__proto__ == Array.prototype);
 
-// we can also add properties through the prototype property
+// // we can also add properties through the prototype property
 
-Proto.prototype.gender = "Male";
+// Proto.prototype.gender = "Male";
 
-// the cactch is that it wont be an owned property, owned properties are properties that are directly defined on an constructor.
+// // the cactch is that it wont be an owned property, owned properties are properties that are directly defined on an constructor.
 
-// because gender was not directly assigned to Proto it wont be an owned property.
-console.log(instance.hasOwnProperty("gender"));
-// compared to an owned property.
-console.log(instance.hasOwnProperty("name"));
+// // because gender was not directly assigned to Proto it wont be an owned property.
+// console.log(instance.hasOwnProperty("gender"));
+// // compared to an owned property.
+// console.log(instance.hasOwnProperty("name"));
 
-console.log(Proto.__proto__);
-console.log(Object.prototype === Proto.__proto__);
+// console.log(Proto.__proto__);
+// console.log(Object.prototype === Proto.__proto__);
 
-// parent prototype of constructor is function object
-console.log((() => {}).__proto__ === Proto.__proto__);
+// // parent prototype of constructor is function object
+// console.log((() => {}).__proto__ === Proto.__proto__);
 
-// the original an firt proto is an object, every thing in javaScript inherits from the Object prototype.
-console.log(Proto.__proto__.__proto__);
-console.log(Object.create({}).__proto__.__proto__);
+// // the original an firt proto is an object, every thing in javaScript inherits from the Object prototype.
+// console.log(Proto.__proto__.__proto__);
+// console.log(Object.create({}).__proto__.__proto__);
 
 // the prototype mechanism is usefull for making reusable code.
 
-const arr = [1, 2, 3];
+// const arr = [1, 2, 3];
 
-console.log(arr.__proto__);
+// console.log(arr.__proto__);
 
-console.log(document.body.__proto__);
+// console.log(document.body.__proto__);
+// Portotypal inheritance of built in Objects.
+// check Parent protoype of an object with the __proto__ property. if result is null then you jxt met the first generation Portotype(So show some respect)
+
+const obj = {};
+console.log(Object.prototype);
+console.log(obj.__proto__ === Object.prototype);
+Object.freeze(obj);
+
+console.log((obj.a = "a"));
+
+console.log(obj);
+
+// class, syntactic sugar over constructors.
+
+const Cons = class {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  getAccountNum() {
+    alert();
+  }
+};
+
+Cons.prototype.height = 180;
+
+Cons.prototype.getId = function () {
+  return {
+    name: this.name,
+    age: this.age,
+    height: this.height,
+  };
+};
+
+const inst = new Cons("john", 21);
+console.log(inst.getId());
+
+console.log("/////////////////////////////////////////////////////////////");
+// setter and getter.
+const Person = class {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  // get function: this is used to get a value as in the get function was a property and not a method(function)
+  // getter function are functions becausde they give the ability to perform some computations before the value is returned
+  get individualData() {
+    return {
+      name: this.name,
+      age: this.age,
+      height: this._height,
+    };
+  }
+  //setters are used to set properties on an object.
+  // its a function that gives the ability to perform certain operations on a property before settin it
+  // set needs atleast ine arg. the val to set
+  // when setting property, specify the _, ie this._email=''
+  set height(val) {
+    this._height = val * 0.01 + " meters";
+  }
+
+  // static methods are methods that not inherited, by the children. these methods are defined only on the parent constructor and not through the prototype property.
+  // create static methods with the static keyword.
+  static getParent() {
+    return this.__proto__;
+  }
+};
+
+const john = new Person("john buscoe", 45);
+
+// getter func
+console.log(john.individualData);
+// setter func
+john._height = "185";
+
+// static
+console.log(Person.getParent());
+// john.getParent();
+
+console.log(
+  "//////////////////////////Object,create()///////////////////////////"
+);
+
+// the object create method is used to a new Obejct that inherits from a specified object or constructor
+const vicent = Object.create(new Person());
+vicent.name = "vincent";
+vicent.age = 45;
+vicent.height = 200;
+console.log(vicent.individualData);
+console.log(vicent.__proto__);
+
+// from Objects
+let objProt = {
+  parent() {
+    return this.__proto__;
+  },
+};
+
+const a = Object.create(objProt);
+console.log(a.parent());
