@@ -238,15 +238,15 @@ let a = 3;
 let b = 2;
 
 // loop while b != 0
-while (b != 0) {
-  // get value of "a and(&) b operation" and move to left by 1 step. store in temp var
-  let t = (a & b) << 1;
-  // get value of "a xor(^) b operation"
-  a = a ^ b;
-  // update b with new value from t operation
-  b = t;
-}
-console.log(a);
+// while (b != 0) {
+//   // get value of "a and(&) b operation" and move to left by 1 step. store in temp var
+//   let t = (a & b) << 1;
+//   // get value of "a xor(^) b operation"
+//   a = a ^ b;
+//   // update b with new value from t operation
+//   b = t;
+// }
+// console.log(a);
 
 // &: when using the & on binary, this operation only returns positive(1) if both values anded(&) are positives, 1&1=1. if both values anded are negative(0) the operation returns a negative, 0&0=0, if one value is positive and the othe is negative it returns a negative value,1&0=0(visa vis)
 // 1&1 =1, 1&0=0, 0&0=0
@@ -261,3 +261,20 @@ console.log(a);
 // the >> operator is used to divide. it shifts the number back by 1 step, this will cause the binary to half in value.
 // in javascript use the << opertor like so, number >> steps, 4 >> 1
 // 0101 = 0010 r 1
+
+/////////////////////////////////////
+// number of '1' bits.
+
+// 110, 111, 1000
+///
+const hammingWeight = (num) => {
+  let bits = 0;
+  while (num) {
+    bits = bits + (num % 2);
+    num = num >> 1;
+  }
+  console.log(bits);
+  return bits;
+};
+
+hammingWeight(5);

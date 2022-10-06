@@ -235,7 +235,8 @@ console.log(
 );
 
 // the object create method is used to a new Obejct that inherits from a specified object or constructor
-const vicent = Object.create(new Person());
+const vicent = Object.create(Person.prototype);
+console.log(vicent);
 vicent.name = "vincent";
 vicent.age = 45;
 vicent.height = 200;
@@ -251,3 +252,34 @@ let objProt = {
 
 const a = Object.create(objProt);
 console.log(a.parent());
+
+// inheritance between constructor functions.
+// make one constructor inherit from constructor
+
+const Human = function (name, age) {
+  this.name = name;
+  this.age = age;
+};
+
+Human.prototype.greet = function () {
+  console.log(`hello ${this.name}, i see you are ${this.age} years old`);
+  if (this.matric && this.department) {
+    console.log(
+      `and I also see you are a student with id ${this.matric} and you study ${this.department}`
+    );
+  }
+};
+const student = function (matric, department, name, age) {
+  // make student constructor inherite properties and methods from Human constructor
+  Human.call(this, name, age);
+  this.matric = matric;
+  this.department = department;
+};
+// link student prototype to human prototype
+student.prototype = Object.create(Human.prototype);
+student.prototype.constructor = student;
+
+const bill = new student("16/cmd09/43", "city management", "bill", 23);
+console.log(bill.__proto__);
+console.dir(student.prototype.constructor);
+bill.greet();
