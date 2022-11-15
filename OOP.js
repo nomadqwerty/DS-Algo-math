@@ -12,7 +12,7 @@ const physicalStructure = new BluePrint("data");
 
 // there are 4 priciples in making of classes
 
-// 1. Abstraction- in classes the lowlevel code implementation is hidden away. this makes it that complicated code can be used with out knowing how its implemented on a lowlevel. ie we do not know how event listeners work but we use them. this is the point of abstraction
+// 1. Abstraction- in classes the lowlevel code implementation is hidden away. this makes it that complicated code can be used with out knowing how its implemented on a lowlevel. ie we do not know how event listeners work but we use them. this is the point of abstraction.
 
 //2. Encapsulation, this means keeping some properties and methods private to the class and not exposed as an API. there are parts of the class that we may not want to expose to external users, so we encapsulate them.
 
@@ -283,3 +283,68 @@ const bill = new student("16/cmd09/43", "city management", "bill", 23);
 console.log(bill.__proto__);
 console.dir(student.prototype.constructor);
 bill.greet();
+
+// class inheritance
+class Person2 {
+  constructor(name, age, sex) {
+    this.name = name;
+    this.age = age;
+    this.sex = sex;
+  }
+  greet() {
+    console.log(`hello ${this.name} how are you?`);
+  }
+}
+
+class Student extends Person2 {
+  #value = "private in constructor functs";
+  constructor(name, age, sex, matric, dept) {
+    super(name, age, sex);
+    this.matric = matric;
+    this.dept = dept;
+  }
+  get studentId() {
+    console.log({
+      name: this.name,
+      age: this.age,
+      sex: this.sex,
+      matric: this.matric,
+      dept: this.dept,
+    });
+  }
+}
+
+const mark = new Student("Mark", 32, "male", "14/0dge/019", "science stuff");
+console.log(mark.studentId);
+console.log(mark.greet());
+
+// private fields and methods: es6 classes
+
+class Hidden {
+  // public fields
+  purpose = "this is to hide feilds";
+  // private filds
+  #hide;
+
+  constructor(hide, addThis) {
+    // property
+    this.addThis = addThis;
+
+    // turn a property to a private field
+    this.#hide = hide;
+  }
+
+  // public method
+  pub() {
+    console.log("this is a public method");
+  }
+  // private mehods not yet implemented in browsers
+  // if defined it will be treated as private fields
+  #priv() {
+    console.log("private");
+  }
+}
+
+const hider = new Hidden("hide this");
+
+console.log(hider);

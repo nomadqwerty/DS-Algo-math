@@ -267,14 +267,82 @@ let b = 2;
 
 // 110, 111, 1000
 ///
-const hammingWeight = (num) => {
-  let bits = 0;
-  while (num) {
-    bits = bits + (num % 2);
-    num = num >> 1;
+// const hammingWeight = (num) => {
+//   let bits = 0;
+//   while (num) {
+//     bits = bits + (num % 2);
+//     num = num >> 1;
+//   }
+//   console.log(bits);
+//   return bits;
+// };
+
+// hammingWeight(5);
+
+// ///////////////////////////
+// counting bits
+const toBi = (n) => {
+  let mod;
+  let binaryRep = [];
+
+  while (n > 0) {
+    mod = n % 10;
+    binaryRep.unshift(mod);
+    n = n - mod;
+    n = n / 10;
   }
-  console.log(bits);
-  return bits;
+  return Number(binaryRep.join(""));
 };
 
-hammingWeight(5);
+// const countingBits = (n) => {
+//   let arr = [];
+//   let binaryArray = [];
+//   for (let i = 0; i < n; i++) {
+//     arr.push(i);
+//   }
+//   for (let i = 0; i < arr.length; i++) {
+//     let rep = toBi(arr[i]);
+//     binaryArray.push(rep);
+//   }
+//   return binaryArray;
+// };
+// console.log(countingBits(1000000));
+
+///////////////////////////////////
+// misssing num. solution
+
+// let arr1 = [9, 6, 4, 2, 3, 5, 7, 0, 1];
+
+// arr1 = arr1.sort((a, b) => a - b);
+// let outPut = 0;
+
+// for (let i = 0; i < arr1.length; i++) {
+//   let first = arr1[i];
+//   let sec = arr1[i + 1];
+//   if (first !== undefined && sec !== undefined) {
+//     if (first !== sec - 1) {
+//       console.log(arr1[i] + 1);
+//     }
+//   }
+// }
+
+////////////////////////////////////////////////////
+//
+const input = "11111111111111111111111111111101";
+let arr = [];
+for (let i = input.length; i >= 0; i--) {
+  if (input[i]) arr.push(input[i]);
+}
+let place = 1;
+let baseTen = 0;
+for (let i = arr.length - 1; i >= 0; i--) {
+  let bytwo = place * 2;
+  place = bytwo;
+  if (Number(arr[i]) === 1) {
+    const times = place / 2;
+    baseTen += times;
+  }
+}
+
+console.log(baseTen);
+console.log(arr.join(""), " ", input);
